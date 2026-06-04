@@ -1,0 +1,8 @@
+
+@import "tailwindcss";
+@import "@fontsource/dela-gothic-one";
+@import "@fontsource/lato";
+@theme {
+    --font-dela-gothic: "Dela Gothic One" , sans-serif;
+    --font-lato : "Lato", sans-serif;
+}
