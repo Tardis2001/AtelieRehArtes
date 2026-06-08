@@ -1,7 +1,28 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "motion/react";
 
 export default function Navbar() {
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+  const [hidden, setHidden] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const isScrollingDown = latest > lastScrollY.current;
+
+    if (isScrollingDown && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+
+    lastScrollY.current = latest;
+  });
+
   const NAV_LINKS = [
     { name: "Principal", href: "#home" },
     { name: "Sobre", href: "#about" },
@@ -12,40 +33,46 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900 border-b border-slate-800 text-white px-6 py-4">
+    <motion.nav
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="fixed top-0 left-0 right-0 z-50 bg-slate-900 border-b border-slate-800 text-white px-6 py-4"
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="sm:text-xl hover:scale-110 transition-transform duration-500 text-sm font-bold tracking-wider font-lato cursor-pointer">
           ATELIE REH ARTES
         </div>
 
-          <ul className="hidden md:flex items-center sm:gap-5">
-            {NAV_LINKS.map((link, index) => (
-              <motion.li
-                key={link.name}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                whileHover={{ scale: 1.1 }}
+        <ul className="hidden md:flex items-center sm:gap-5">
+          {NAV_LINKS.map((link, index) => (
+            <motion.li
+              key={link.name}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              whileHover={{ scale: 1.1 }}
+            >
+              <a
+                href={link.href}
+                className="font-lato sm:text-lg z-10 m-2 block transition-all duration-500 text-slate-300 hover:text-white hover:text-shadow-lg/45 text-shadow-blue-400"
               >
-     
-                <a
-                  href={link.href}
-                  className="font-lato sm:text-lg z-10 m-2 block transition-all duration-500 text-slate-300 hover:text-white hover:text-shadow-lg/45 text-shadow-blue-400"
-                
-                >
-                  {link.name}
-                </a>
-                  {hoveredIndex === index && (
-                    <motion.span
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 right-0 h-px bg-white mx-auto"
-                        initial={{ opacity: 0,width:"0%"}}
-                        animate={{ opacity: 1, width:"100%"}}
-                        exit={{ opacity: 0,width:"0%"}}
-                        transition={{ type: "spring", stiffness: 250, damping: 30 }}
-                    />
-                   )}
-              </motion.li>
-            ))}
-          </ul>
+                {link.name}
+              </a>
+              {hoveredIndex === index && (
+                <motion.span
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 right-0 h-px bg-white mx-auto"
+                  initial={{ opacity: 0, width: "0%" }}
+                  animate={{ opacity: 1, width: "100%" }}
+                  exit={{ opacity: 0, width: "0%" }}
+                  transition={{ type: "spring", stiffness: 250, damping: 30 }}
+                />
+              )}
+            </motion.li>
+          ))}
+        </ul>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 relative z-50 focus:outline-none cursor-pointer"
@@ -109,6 +136,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

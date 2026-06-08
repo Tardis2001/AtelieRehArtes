@@ -1,7 +1,11 @@
 ---
 import MainLayout from "../layout/MainLayout.astro";
-
+import Hero from "../components/Hero"
+import Products from "../components/Products";
+import Contacts from "../components/Contacts";
 ---
 <MainLayout>
-	<h1>ATELIE REH ARTES</h1>
+	<Hero client:load />
+	<Products client:load />
+	<Contacts client:load />
 </MainLayout>
