@@ -10,7 +10,19 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const lastScrollY = useRef(0);
   const [hidden, setHidden] = useState(false);
-
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      
+      window.history.pushState(null, "", targetId);
+    }
+  };
   useMotionValueEvent(scrollY, "change", (latest) => {
     const isScrollingDown = latest > lastScrollY.current;
 
@@ -56,7 +68,9 @@ export default function Navbar() {
               whileHover={{ scale: 1.1 }}
             >
               <a
+              data-astro-history="replace" 
                 href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="font-lato sm:text-lg z-10 m-2 block transition-all duration-500 text-slate-300 hover:text-white hover:text-shadow-lg/45 text-shadow-blue-400"
               >
                 {link.name}
@@ -124,8 +138,9 @@ export default function Navbar() {
                   transition={{ type: "spring", stiffness: 300, damping: 24 }}
                 >
                   <a
+                    data-astro-history="replace"
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleScroll(e, link.href)}
                     className="block text-lg font-medium text-slate-300 hover:text-emerald-400 transition-colors"
                   >
                     {link.name}
