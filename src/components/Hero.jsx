@@ -28,16 +28,16 @@ export default function Hero() {
   });
 
   const opacitySection1 = useTransform(progressSection1, [0.4, 0.5], [0, 1]);
-  const opacitySection2 = useTransform(progressSection2, [0.3, 0.5], [0, 1]);
-  const opacitySection3 = useTransform(progressSection3, [0.3, 0.5], [0, 1]);
+  const opacitySection2 = useTransform(progressSection2, [0.2, 0.5], [0, 1]);
+  const opacitySection3 = useTransform(progressSection3, [0.2, 0.5], [0, 1]);
 
   const rawY1 = useTransform(
     progressSection1,
-    [0.4, 0.5, 0.7, 0.8],
-    ["0vh", "100vh", "100vh", "200vh"],
+    [0.2, 0.4, 0.5, 0.8],
+    ["0vh", "80vh", "80vh", "200vh"],
   );
-  const rawX2 = useTransform(progressSection2, [0, 0.5], ["100vw", "0vw"]);
-  const rawX3 = useTransform(progressSection3, [0, 0.5], ["-100vw", "0vw"]);
+  const rawX2 = useTransform(progressSection2, [0, 0.25], ["100vw", "0vw"]);
+  const rawX3 = useTransform(progressSection3, [0, 0.25], ["-100vw", "0vw"]);
 
   const ySection1 = useSpring(rawY1, { stiffness: 60, damping: 20 });
   const xSection2 = useSpring(rawX2, { stiffness: 60, damping: 20 });
@@ -50,7 +50,7 @@ export default function Hero() {
     >
       <div
         ref={section1Ref}
-        className="bg-slate-900 bg-[url('/hero.png')] bg-cover w-full h-[150vh] flex justify-center items-center overflow-hidden"
+        className="bg-slate-900 bg-[url('/Hero.jpeg')] bg-cover bg-no-repeat w-full h-[150vh] flex justify-center items-center overflow-hidden"
       >
         <div className="bg-black/30 backdrop-blur-sm w-full h-full ">
           <motion.p
@@ -68,13 +68,13 @@ export default function Hero() {
       >
         <motion.div
           style={{ x: xSection2, opacity: opacitySection2 }}
-          className="will-change-transform flex flex-row w-full justify-end"
+          className="will-change-transform flex flex-col sm:flex-row w-full justify-end items-center"
         >
           <img
             src="https://placehold.co/400x400"
-           className="w-auto aspect-square m-8 rounded-3xl object-cover"
+           className="w-[70%] sm:w-[50%] aspect-square m-8 rounded-3xl object-cover"
           />
-          <p className="font-dela-gothic text-right w-[40%] mr-[10%] sm:text-2xl text-sm text-slate-800">
+          <p className="font-dela-gothic text-center sm:text-right w-[90%] sm:w-[40%] sm:mr-[10%] sm:text-2xl text-sm text-slate-800">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
             eos obcaecati architecto facere non molestias soluta odit! Nam non,
             praesentium necessitatibus enim tempora dolorem mollitia magni
@@ -89,9 +89,9 @@ export default function Hero() {
       >
         <motion.div
           style={{ x: xSection3, opacity: opacitySection3 }}
-          className="will-change-transform flex flex-row w-full justify-start"
+          className="will-change-transform flex flex-col-reverse sm:flex-row w-full justify-start  items-center" 
         >
-          <p className=" font-dela-gothic text-left w-[40%] ml-[10%] sm:text-2xl text-sm text-slate-800">
+          <p className=" font-dela-gothic text-center sm:text-left w-[90%] sm:w-[40%] sm:ml-[10%] sm:text-2xl text-sm text-slate-800">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
             eos obcaecati architecto facere non molestias soluta odit! Nam non,
             praesentium necessitatibus enim tempora dolorem mollitia magni
@@ -99,7 +99,7 @@ export default function Hero() {
           </p>
           <img
             src="https://placehold.co/400x400"
-            className="w-auto aspect-square m-8 rounded-3xl object-cover"
+            className="w-[70%] sm:w-[50%] aspect-square m-8 rounded-3xl object-cover"
           />
         </motion.div>
       </div>
