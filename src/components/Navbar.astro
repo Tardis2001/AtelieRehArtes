@@ -1,0 +1,97 @@
+---
+// src/components/Navbar.astro
+const navItems = [
+  { name: 'Início', href: '/' },
+  { name: 'Minhas Peças', href: '/pecas' },
+  { name: 'Minha História', href: '/sobre' },
+  { name: 'Encomendas', href: '/contato' },
+];
+---
+
+<header id="navbar" class="bg-blue-50/80 backdrop-blur-md text-blue-950 sticky left-0 right-0 top-0 z-50 border-b border-blue-100 transition-transform duration-300 ease-in-out">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <div class="shrink-0">
+        <a href="/" class="text-2xl font-dela-gothic font-bold tracking-wide text-blue-900 hover:text-blue-800 transition">
+          Ateliê Reh Artes <span class="text-xs font-lato tracking-normal font-normal text-blue-600 block -mt-0.5">Artesanato & Crochê</span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="text-sm font-medium text-blue-900/80 hover:text-blue-950 hover:underline underline-offset-4 decoration-blue-500 transition-all duration-200"
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex md:hidden">
+        <button
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-blue-800 hover:bg-blue-100 focus:outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abrir menu</span>
+          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="hidden md:hidden bg-blue-50 border-b border-blue-100" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="block px-3 py-2 rounded-md text-base font-medium text-blue-900 hover:bg-blue-100 transition"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Logic
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  const navbar = document.getElementById('navbar');
+  let lastScrollY = window.scrollY;
+
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('hidden');
+
+      if (!isMobileMenuOpen) {
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          navbar.classList.add('-translate-y-full');
+        } else {
+          navbar.classList.remove('-translate-y-full');
+        }
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  }
+</script>

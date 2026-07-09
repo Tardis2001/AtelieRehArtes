@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css'
-import Navbar from '../components/Navbar' 
+import Navbar from '../components/Navbar.astro' 
 ---
 
 <html class="scroll-smooth" lang="pt-BR">
@@ -12,10 +12,10 @@ import Navbar from '../components/Navbar'
 		<meta name="generator" content={Astro.generator} />
 		<title>Atelie Reh Artes</title>
 	</head>
-	<body>
-        <Navbar client:load/>
-		<main class="w-full min-h-screen">
-        <slot />
+	<body class="scroll-smooth">
+        <Navbar/>
+		<main>
+        	<slot />
 		</main>
 	</body>
 </html>

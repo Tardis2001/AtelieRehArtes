@@ -1,0 +1,114 @@
+---
+import Thread from "../assets/ThreadIcon.svg";
+import Exclusive from "../assets/ExclusiveIcon.svg";
+import Box from "../assets/BoxIcon.svg";
+const title = "A mente e as mãos por trás dos pontos";
+const bioParagraph1 =
+  "Olá! Eu sou a artesã por trás de cada detalhe que você vê aqui. Minha paixão pelo artesanato começou há anos, observando o novelo de linha se transformar em peças únicas através das agulhas. O que começou como um hobby logo virou o meu propósito de vida.";
+const bioParagraph2 =
+  "Para mim, o crochê não é apenas cruzar fios; é uma forma de expressar carinho, eternizar momentos e levar aconchego para o lar das pessoas. Cada peça leva horas de dedicação, escolha minuciosa de materiais de qualidade e, acima de tudo, muito amor.";
+---
+
+<section
+  id="sobre"
+  class="bg-white text-blue-950 py-20 relative overflow-hidden"
+>
+  <div
+    class="absolute bottom-0 right-0 w-75 h-75 bg-blue-50 rounded-full blur-3xl pointer-events-none -z-10"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center W-[40%] sm:w-full">
+      <div class="lg:col-span-5 relative flex justify-center">
+        <div
+          class="absolute inset-0 bg-blue-100 rounded-4xl transform -rotate-3 scale-102"
+        >
+        </div>
+
+        <div
+          class="relative bg-blue-50 p-4 rounded-4xl shadow-lg border border-blue-100 max-w-sm w-full"
+        >
+          <img
+            src="https://placehold.co/400x600"
+            alt="Foto da artesã criando uma peça"
+            class="rounded-3xl w-full h-100 object-cover"
+          />
+
+          <div
+            class="absolute -bottom-4 -right-4 bg-blue-800 text-blue-50 px-4 py-2 rounded-xl text-xs font-serif font-medium shadow-md"
+          >
+            Feito com carinho
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 lg:pl-6 text-center lg:text-left">
+        <span
+          class="text-xs font-bold uppercase tracking-wider text-blue-700 font-sans block mb-3"
+        >
+          Minha História
+        </span>
+
+        <h2
+          class="text-3xl sm:text-4xl font-serif font-bold text-blue-950 leading-tight"
+        >
+          {title}
+        </h2>
+
+        <div
+          class="mt-6 space-y-4 text-base text-blue-900/80 leading-relaxed font-sans"
+        >
+          <p>{bioParagraph1}</p>
+          <p>{bioParagraph2}</p>
+        </div>
+
+        <div
+          class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-blue-100 pt-8"
+        >
+          <div class="flex flex-row items-center gap-4">
+            <Thread width={42} height={42} />
+            <div class="flex flex-col items-start">
+              <h3 class="font-dela-gothic font-bold text-blue-950 text-sm">
+                Fios Selecionados
+              </h3>
+              <p
+                class="text-xs font-lato text-blue-900/70 mt-1 text-center lg:text-left"
+              >
+                Material de alta qualidade que dura gerações.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-row items-center gap-4">
+            <Exclusive width={42} height={42} />
+            <div class="flex flex-col items-start">
+              <h3 class="font-dela-gothic font-bold text-blue-950 text-sm">
+                Peças Exclusivas
+              </h3>
+              <p
+                class="text-xs font-lato text-blue-900/70 mt-1 text-center lg:text-left"
+              >
+                Nenhum ponto sai exatamente igual ao outro.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-row items-center gap-4">
+            <Box width={42} height={42} />
+            <div class="flex flex-col items-start">
+              <h3 class="font-dela-gothic font-bold text-blue-950 text-sm">
+                Envio Afetivo
+              </h3>
+              <p
+                class="text-xs font-lato text-blue-900/70 mt-1 text-center lg:text-left"
+              >
+                Embalagem perfumada e bilhete escrito à mão.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

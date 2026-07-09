@@ -1,0 +1,65 @@
+---
+const title = "Arte em cada ponto, amor em cada detalhe";
+const subtitle =
+  "Peças exclusivas feitas à mão em crochê e artesanato para acolher e decorar a sua casa com afeto.";
+---
+
+<section
+  class="relative bg-[url('../assets/Hero.jpeg')] object-contain text-blue-950 overflow-hidden min-h-[80vh] flex items-center"
+>
+  <div class="absolute min-w-screen min-h-full backdrop-blur-sm bg-black/30">
+  </div>
+  <div
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 z-10 w-full"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="text-left max-w-xl mx-auto lg:mx-0">
+        <div
+          class="inline-flex items-center gap-1.5 px-3 font-dela-gothic py-1 rounded-full bg-blue-100 border border-blue-200 text-xs font-medium text-blue-800 mb-6"
+        >
+          100% Feito à Mão com Carinho
+        </div>
+        <div class="py-1 px-3 bg-blue-100 rounded-lg">
+        <h1
+          class="text-4xl sm:text-5xl font-dela-gothic font-bold tracking-tight text-blue-950 leading-[1.2]"
+        >
+          {title}
+        </h1>
+
+        <p
+          class="mt-6 text-base sm:text-lg text-blue-800 leading-relaxed font-lato"
+        >
+          {subtitle}
+        </p>
+        </div>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#catalogo"
+            class="px-8 py-3.5 text-sm font-semibold font-lato text-white bg-blue-800 hover:bg-blue-900 rounded-full shadow-md hover:shadow-lg transition-all duration-200 text-center"
+          >
+            Ver Catálogo de Peças
+          </a>
+
+          <a
+            href="#encomendas"
+            class="px-8 py-3.5 text-sm font-semibold font-lato bg-blue-50 text-blue-800 hover:bg-blue-100/80 border border-blue-800/40 rounded-full transition-all duration-200 text-center"
+          >
+            Encomenda Personalizada
+          </a>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center lg:justify-end">
+
+        <div class="relative p-3 rounded-3xl max-w-md w-full overflow-hidden">
+ 
+          <img 
+            src="https://placehold.co/600x400" 
+            alt="Trabalho manual com linhas de crochê" 
+            class="rounded-2xl w-full h-87.5 object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

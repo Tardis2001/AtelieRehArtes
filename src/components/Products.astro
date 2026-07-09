@@ -1,0 +1,87 @@
+---
+import Purse from "../assets/purse.svg"
+const produtos = [
+  {
+    nome: "Toalha Personalizada Eloah",
+    categoria: "Toalhinha",
+    descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id felis vel lacus bibendum semper",
+    preco: "R$ XX,XX",
+    imagem: "src/assets/ToalhaEloahEditada3.jpg",
+  },
+  {
+    nome: "Kit Personalizado Eloah",
+    categoria: "Kits",
+    descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id felis vel lacus bibendum semper",
+    preco: "R$ XXX,XX",
+    imagem: "src/assets/KitEloah.jpg",
+  },
+  {
+    nome: "Bolsa Personalizada Eloah",
+    categoria: "Bolsa",
+    descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id felis vel lacus bibendum semper",
+    preco: "R$ XXX,XX",
+    imagem: "src/assets/BolsaEditadaEloah.jpg",
+  }
+];
+---
+
+<section id="catalogo" class="bg-blue-50/50 text-blue-950 py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-xl mx-auto mb-16">
+      <span class="text-xl font-bold uppercase tracking-wider text-blue-700 font-dela-gothic block mb-2">
+        Feito sob encomenda
+      </span>
+      <h2 class="text-md sm:text-xl font-lato font-bold text-blue-950">
+        Destaques do Meu Ateliê
+      </h2>
+      <p class="mt-4 text-sm sm:text-base font-lato text-blue-900/70">
+        Cada peça é única e pode ser personalizada nas cores que você mais amar para combinar com sua rotina.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {produtos.map((produto) => (
+        <div class="bg-white rounded-3xl border border-blue-100/80 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+          
+          <div class="h-64 w-full overflow-hidden relative bg-blue-50">
+            <img 
+              src={produto.imagem} 
+              alt={produto.nome}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 font-lato bg-blue-50/90 backdrop-blur-sm text-blue-900 text-xs font-medium px-3 py-1 rounded-full border border-blue-100">
+              {produto.categoria}
+            </span>
+          </div>
+
+          <div class="p-6 flex flex-col grow">
+            <h3 class="text-xl font-dela-gothic font-bold text-blue-950 group-hover:text-blue-800 transition-colors">
+              {produto.nome}
+            </h3>
+            
+            <p class="mt-3 text-sm font-lato text-blue-900/70 leading-relaxed grow">
+              {produto.descricao}
+            </p>
+
+            <div class="mt-6 pt-4 border-t border-blue-50 flex items-center justify-between gap-2">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-blue-700/60 font-lato font-medium">A partir de</span>
+                <span class="text-lg font-bold text-blue-950 font-lato">{produto.preco}</span>
+              </div>
+
+              {/* <p
+                class="inline-flex cursor-pointer hover:scale-110 items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-800 hover:bg-blue-900 rounded-full shadow-sm transition-all duration-200"
+              >
+                <Purse width={24} height={24}/>
+                Encomendar
+              </p> */}
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
