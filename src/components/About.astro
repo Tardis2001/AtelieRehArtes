@@ -2,11 +2,14 @@
 import Thread from "../assets/ThreadIcon.svg";
 import Exclusive from "../assets/ExclusiveIcon.svg";
 import Box from "../assets/BoxIcon.svg";
-const title = "A mente e as mãos por trás dos pontos";
-const bioParagraph1 =
-  "Olá! Eu sou a artesã por trás de cada detalhe que você vê aqui. Minha paixão pelo artesanato começou há anos, observando o novelo de linha se transformar em peças únicas através das agulhas. O que começou como um hobby logo virou o meu propósito de vida.";
-const bioParagraph2 =
-  "Para mim, o crochê não é apenas cruzar fios; é uma forma de expressar carinho, eternizar momentos e levar aconchego para o lar das pessoas. Cada peça leva horas de dedicação, escolha minuciosa de materiais de qualidade e, acima de tudo, muito amor.";
+import { readSingleton } from "@directus/sdk";
+import { directus } from "../lib/directus";
+const sobre = await directus.request(
+  readSingleton("Sobre", {
+    fields: ["title", "bioParagraph1", "bioParagraph2", "foto_perfil"],
+  }),
+);
+const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL;
 ---
 
 <section
@@ -19,26 +22,28 @@ const bioParagraph2 =
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center W-[40%] sm:w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5 relative flex justify-center">
-        <div
-          class="absolute inset-0 bg-blue-100 rounded-4xl transform -rotate-3 scale-102"
-        >
-        </div>
-
-        <div
-          class="relative bg-blue-50 p-4 rounded-4xl shadow-lg border border-blue-100 max-w-sm w-full"
-        >
-          <img
-            src="https://placehold.co/400x600"
-            alt="Foto da artesã criando uma peça"
-            class="rounded-3xl w-full h-100 object-cover"
-          />
+        <div class="relative w-full max-w-sm">
+          <div
+            class="absolute inset-0 bg-blue-100 shadow-xl shadow-black rounded-4xl transform -rotate-3 scale-102 w-full h-full"
+          >
+          </div>
 
           <div
-            class="absolute -bottom-4 -right-4 bg-blue-800 text-blue-50 px-4 py-2 rounded-xl text-xs font-serif font-medium shadow-md"
+            class="relative bg-blue-50 p-4 rounded-4xl border border-blue-100 max-w-sm w-full"
           >
-            Feito com carinho
+            <img
+              src={`${DIRECTUS_URL}/assets/${sobre.foto_perfil}`}
+              alt="Foto da artesã criando uma peça"
+              class="rounded-3xl w-full h-100 object-cover"
+            />
+
+            <div
+              class="absolute -bottom-4 -right-4 bg-blue-800 text-blue-50 px-4 py-2 rounded-xl text-xs font-serif font-medium shadow-md"
+            >
+              Feito com carinho
+            </div>
           </div>
         </div>
       </div>
@@ -53,14 +58,14 @@ const bioParagraph2 =
         <h2
           class="text-3xl sm:text-4xl font-serif font-bold text-blue-950 leading-tight"
         >
-          {title}
+          {sobre.title}
         </h2>
 
         <div
           class="mt-6 space-y-4 text-base text-blue-900/80 leading-relaxed font-sans"
         >
-          <p>{bioParagraph1}</p>
-          <p>{bioParagraph2}</p>
+          <p>{sobre.bioParagraph1}</p>
+          <p>{sobre.bioParagraph2}</p>
         </div>
 
         <div
@@ -70,7 +75,7 @@ const bioParagraph2 =
             <Thread width={42} height={42} />
             <div class="flex flex-col items-start">
               <h3 class="font-dela-gothic font-bold text-blue-950 text-sm">
-                Fios Selecionados
+                Material Selecionados
               </h3>
               <p
                 class="text-xs font-lato text-blue-900/70 mt-1 text-center lg:text-left"
