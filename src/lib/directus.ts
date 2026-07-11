@@ -30,10 +30,6 @@ interface Schema {
   Global: Global;
   Hero: Hero;
 }
-const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL || import.meta.env.DIRECTUS_URL;
+const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL;
 
-console.log("DIRECTUS URL: " + DIRECTUS_URL)
-if (!DIRECTUS_URL) {
-  throw new Error("Erro Crítico: A variável DIRECTUS_URL não foi definida no ambiente da Vercel.");
-}
 export const directus = createDirectus<Schema>(DIRECTUS_URL).with(rest());
