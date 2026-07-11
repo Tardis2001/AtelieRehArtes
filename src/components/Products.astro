@@ -8,8 +8,10 @@ const produtos = await directus.request(
     limit: 3,
   })
 );
-const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL;
-
+const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL || import.meta.env.DIRECTUS_URL;
+if (!DIRECTUS_URL) {
+  throw new Error("Erro Crítico: A variável DIRECTUS_URL não foi definida no ambiente da Vercel.");
+}
 ---
 
 <section id="products" class="bg-blue-50/50 text-blue-950 py-20">
