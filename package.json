@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^11.0.2",
     "@directus/sdk": "^23.0.0",
     "@fontsource/dela-gothic-one": "^5.2.7",
     "@fontsource/lato": "^5.2.7",
