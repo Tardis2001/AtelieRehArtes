@@ -2,14 +2,7 @@
 import Thread from "../assets/ThreadIcon.svg";
 import Exclusive from "../assets/ExclusiveIcon.svg";
 import Box from "../assets/boxIcon.svg";
-import { readSingleton } from "@directus/sdk";
-import { directus } from "../lib/directus";
-const sobre = await directus.request(
-  readSingleton("Sobre", {
-    fields: ["title", "bioParagraph1", "bioParagraph2", "foto_perfil"],
-  }),
-);
-const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL 
+
 ---
 
 <section
@@ -34,7 +27,7 @@ const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL
             class="relative bg-blue-50 p-4 rounded-4xl border border-blue-100 max-w-sm w-full"
           >
             <img
-              src={`${DIRECTUS_URL}/assets/${sobre.foto_perfil}`}
+              src={`src/assets/profile.png`}
               alt="Foto da artesã criando uma peça"
               class="rounded-3xl w-full h-100 object-cover"
             />
@@ -58,14 +51,14 @@ const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL
         <h2
           class="text-3xl sm:text-4xl font-serif font-bold text-blue-950 leading-tight"
         >
-          {sobre.title}
+          A mente e as mãos por trás dos pontos
         </h2>
 
         <div
           class="mt-6 space-y-4 text-base text-blue-900/80 leading-relaxed font-sans"
         >
-          <p>{sobre.bioParagraph1}</p>
-          <p>{sobre.bioParagraph2}</p>
+          <p>Sou a artesã apaixonada que transforma linhas e tecidos em peças únicas. Cada ponto carrega dedicação e o desejo de entregar não apenas um produto utilitário, mas uma experiência de carinho e cuidado feita inteiramente à mão.</p>
+          <p>O Ateliê Reh Artes une organização e afeto através de kits e necessaires artesanais exclusivas. Criamos peças estruturadas, com tecidos premium e acabamento impecável, feitas para trazer praticidade e estilo ao teu dia a dia.</p>
         </div>
 
         <div

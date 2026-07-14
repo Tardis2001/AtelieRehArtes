@@ -1,14 +1,24 @@
 ---
-import { directus } from '../lib/directus';
-import { readItems } from '@directus/sdk';
-import Purse from "../assets/purse.svg"
-const produtos = await directus.request(
-  readItems('Produtos', {
-    fields: ['id', 'nome', 'category', 'description', 'price', 'image'],
-    limit: 3,
-  })
-);
-const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL
+const produtos = [
+    {
+      nome: "Bolsa",
+      description: "Bolsas perfeitas montadas para o seu dia a dia e praticidade",
+      category: "Bolsas",
+      image: "BolsaEditadaEloah.jpg" 
+    },
+    {
+      nome: "Kits",
+      description: "Kits criados perfeitamente para você",
+      category: "Kits",
+      image: "KitEloah.jpg"
+    },
+    {
+      nome: "Toalhinha",
+      description: "Praticidade para levar à escola, trabalho ou viagens.",
+      category: "Toalhinha",
+      image: "ToalhinhaEloahEditada.jpg"
+    }
+  ]
 ---
 
 <section id="products" class="bg-blue-50/50 text-blue-950 py-20">
@@ -32,7 +42,7 @@ const DIRECTUS_URL = import.meta.env.PUBLIC_DIRECTUS_URL
           
           <div class="h-64 w-full overflow-hidden relative bg-blue-50">
             <img 
-              src={`${DIRECTUS_URL}/assets/${produto.image}`} 
+              src={`src/assets/${produto.image}`} 
               alt={produto.nome}
               loading="lazy"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

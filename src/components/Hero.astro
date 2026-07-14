@@ -1,12 +1,4 @@
 ---
-import { readSingleton } from "@directus/sdk";
-import { directus } from "../lib/directus";
-
-const hero = await directus.request(
-  readSingleton("Hero", {
-    fields: ["title", "subtitle"],
-  }),
-);
 ---
 
 <section
@@ -28,13 +20,13 @@ const hero = await directus.request(
         <h1
           class="text-4xl sm:text-5xl font-dela-gothic font-bold tracking-tight text-blue-950 leading-[1.2]"
         >
-          {hero.title}
+          Kits e necessaires artesanais que organizam a tua rotina com afeto
         </h1>
 
         <p
           class="mt-6 text-base sm:text-lg text-blue-800 leading-relaxed font-lato"
         >
-          {hero.subtitle}
+          No Ateliê Reh Artes, transformamos tecidos em peças exclusivas e estruturadas. O cuidado único do feito à mão feito especialmente para ti
         </p>
         </div>
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
