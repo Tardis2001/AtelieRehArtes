@@ -1,22 +1,25 @@
 ---
+import imagemBolsa from '../assets/BolsaEditadaEloah.jpg';
+import imagemKit from '../assets/KitEloah.jpg';
+import imagemToalhinha from '../assets/ToalhinhaEloahEditada.jpg';
 const produtos = [
     {
       nome: "Bolsa",
       description: "Bolsas perfeitas montadas para o seu dia a dia e praticidade",
       category: "Bolsas",
-      image: "BolsaEditadaEloah.jpg" 
+      image: imagemBolsa 
     },
     {
       nome: "Kits",
       description: "Kits criados perfeitamente para você",
       category: "Kits",
-      image: "KitEloah.jpg"
+      image: imagemKit
     },
     {
       nome: "Toalhinha",
       description: "Praticidade para levar à escola, trabalho ou viagens.",
       category: "Toalhinha",
-      image: "ToalhinhaEloahEditada.jpg"
+      image: imagemToalhinha
     }
   ]
 ---
@@ -41,8 +44,8 @@ const produtos = [
         <div class="bg-white rounded-3xl border border-blue-100/80 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
           
           <div class="h-64 w-full overflow-hidden relative bg-blue-50">
-            <img 
-              src={`public/${produto.image}`} 
+            <img
+              src={produto.image.src} 
               alt={produto.nome}
               loading="lazy"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
